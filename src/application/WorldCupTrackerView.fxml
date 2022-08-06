@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.collections.FXCollections?>
 
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WorldCupTrackerController">
    <children>
       <HBox prefHeight="825.0" prefWidth="995.0">
          <children>
@@ -17,9 +17,9 @@
                <items>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <TextField layoutX="251.0" layoutY="369.0" />
-                        <TextField layoutX="251.0" layoutY="616.0" />
-                        <ChoiceBox layoutX="251.0" layoutY="504.0" prefHeight="31.0" prefWidth="187.0">
+                        <TextField fx:id="assistsTextfield" layoutX="251.0" layoutY="369.0" />
+                        <TextField fx:id="updatePlayerTextfield" layoutX="251.0" layoutY="616.0" />
+                        <ChoiceBox fx:id="resultChoicebox" layoutX="251.0" layoutY="504.0" prefHeight="31.0" prefWidth="187.0">
                         	<items>
                         		<FXCollections fx:factory="observableArrayList">
                         			<String fx:value="Win" />
@@ -27,13 +27,13 @@
                         		</FXCollections>
                         	</items>
                         </ChoiceBox>
-                        <TextField layoutX="251.0" layoutY="471.0" />
-                        <Button layoutX="227.0" layoutY="50.0" mnemonicParsing="false" text="Add" textFill="#1515bf" />
+                        <TextField fx:id="updateCountryTextfield" layoutX="251.0" layoutY="471.0" />
+                        <Button layoutX="227.0" layoutY="50.0" mnemonicParsing="false" onAction="#addCountry" text="Add" textFill="#1515bf" />
                         <Label layoutX="42.0" layoutY="95.0" text="Country Name:" />
                         <Label layoutX="42.0" layoutY="125.0" text="Matches Won:" />
                         <Label layoutX="42.0" layoutY="156.0" text="Matches Drawn:" />
-                        <TextField layoutX="251.0" layoutY="90.0" />
-                        <TextField layoutX="251.0" layoutY="151.0" />
+                        <TextField fx:id="countryNameTextfield" layoutX="251.0" layoutY="90.0" />
+                        <TextField fx:id="matchesDrawnTextfield" layoutX="251.0" layoutY="151.0" />
                         <Label layoutX="22.0" layoutY="47.0" text="Add Country" textFill="#261ec3">
                            <font>
                               <Font size="25.0" />
@@ -44,34 +44,34 @@
                               <Font size="25.0" />
                            </font>
                         </Label>
-                        <Button layoutX="227.0" layoutY="226.0" mnemonicParsing="false" text="Add" textFill="#b8633d" />
+                        <Button layoutX="227.0" layoutY="226.0" mnemonicParsing="false" onAction="#addPlayer" text="Add" textFill="#b8633d" />
                         <Label layoutX="42.0" layoutY="273.0" text="Player Name:" />
                         <Label layoutX="42.0" layoutY="307.0" text="Age:" />
                         <Label layoutX="40.0" layoutY="340.0" text="Goals Scored:" />
                         <Label layoutX="40.0" layoutY="374.0" text="Number of Assists:" />
-                        <TextField layoutX="251.0" layoutY="268.0" />
-                        <TextField layoutX="251.0" layoutY="302.0" />
-                        <Slider blockIncrement="1.0" layoutX="251.0" layoutY="676.0" majorTickUnit="1.0" max="7.0" minorTickCount="0" prefHeight="18.0" prefWidth="187.0" showTickLabels="true" showTickMarks="true" />
-                        <Slider blockIncrement="1.0" layoutX="251.0" layoutY="731.0" majorTickUnit="1.0" max="7.0" minorTickCount="0" prefHeight="18.0" prefWidth="187.0" showTickLabels="true" showTickMarks="true" />
+                        <TextField fx:id="playerNameTextfield" layoutX="251.0" layoutY="268.0" />
+                        <TextField fx:id="ageTextfield" layoutX="251.0" layoutY="302.0" />
+                        <Slider fx:id="goalsSlider" blockIncrement="1.0" layoutX="251.0" layoutY="676.0" majorTickUnit="1.0" max="7.0" minorTickCount="0" prefHeight="18.0" prefWidth="187.0" showTickLabels="true" showTickMarks="true" />
+                        <Slider fx:id="assistSlider" blockIncrement="1.0" layoutX="251.0" layoutY="731.0" majorTickUnit="1.0" max="7.0" minorTickCount="0" prefHeight="18.0" prefWidth="187.0" showTickLabels="true" showTickMarks="true" />
                         <Label layoutX="22.0" layoutY="425.0" text="Update Country" textFill="#3426d0">
                            <font>
                               <Font size="25.0" />
                            </font>
                         </Label>
-                        <Button layoutX="216.0" layoutY="428.0" mnemonicParsing="false" text="Update" textFill="#2f22bc" />
+                        <Button layoutX="216.0" layoutY="428.0" mnemonicParsing="false" onAction="#updateCountry" text="Update" textFill="#2f22bc" />
                         <Label layoutX="42.0" layoutY="476.0" text="Country Name:" />
                         <Label layoutX="42.0" layoutY="509.0" text="Match Result:" />
-                        <TextField layoutX="251.0" layoutY="120.0" />
+                        <TextField fx:id="matchesWonTextfield" layoutX="251.0" layoutY="120.0" />
                         <Label layoutX="23.0" layoutY="570.0" text="Update Player" textFill="#ad411a">
                            <font>
                               <Font size="25.0" />
                            </font>
                         </Label>
-                        <Button layoutX="219.0" layoutY="573.0" mnemonicParsing="false" text="Update" textFill="#c96d26" />
+                        <Button layoutX="219.0" layoutY="573.0" mnemonicParsing="false" onAction="#updatePlayer" text="Update" textFill="#c96d26" />
                         <Label layoutX="42.0" layoutY="621.0" text="Player Name:" />
                         <Label layoutX="40.0" layoutY="664.0" text="Goals Scored:" />
                         <Label layoutX="40.0" layoutY="719.0" text="Goals Assisted:" />
-                        <TextField layoutX="251.0" layoutY="335.0" />
+                        <TextField fx:id="goalsScoredTextfield" layoutX="251.0" layoutY="335.0" />
                      </children>
                   </AnchorPane>
                </items>
@@ -90,17 +90,17 @@
                               <Label layoutX="47.0" layoutY="97.0" text="Display Top 3 Countries with Most Points:" />
                               <Label layoutX="47.0" layoutY="132.0" text="Display Top 3 Highest-Scoring Players:" />
                               <Label layoutX="47.0" layoutY="168.0" text="Display All Players of a Country:" />
-                              <Button layoutX="396.0" layoutY="92.0" mnemonicParsing="false" text="View" />
-                              <Button layoutX="396.0" layoutY="127.0" mnemonicParsing="false" text="View" />
-                              <TextField layoutX="166.0" layoutY="195.0" />
-                              <Button layoutX="381.0" layoutY="195.0" mnemonicParsing="false" text="Generate" />
+                              <Button layoutX="396.0" layoutY="92.0" mnemonicParsing="false" onAction="#viewTopCountries" text="View" />
+                              <Button layoutX="396.0" layoutY="127.0" mnemonicParsing="false" onAction="#viewTopPlayers" text="View" />
+                              <TextField fx:id="playersOfCountriesTextfield" layoutX="166.0" layoutY="195.0" />
+                              <Button layoutX="381.0" layoutY="195.0" mnemonicParsing="false" onAction="#viewPlayersOfCountries" text="Generate" />
                               <Label layoutX="48.0" layoutY="238.0" text="Display Players Over a Certain Age:" />
-                              <TextField layoutX="166.0" layoutY="267.0" />
-                              <Button layoutX="381.0" layoutY="267.0" mnemonicParsing="false" text="Generate" />
+                              <TextField fx:id="displayAgeTextfield" layoutX="166.0" layoutY="267.0" />
+                              <Button layoutX="381.0" layoutY="267.0" mnemonicParsing="false" onAction="#viewCertainAge" text="Generate" />
                               <Label layoutX="48.0" layoutY="319.0" text="Display All Countries:" />
                               <Label layoutX="47.0" layoutY="361.0" text="Display All Players:" />
-                              <Button layoutX="396.0" layoutY="314.0" mnemonicParsing="false" text="View" />
-                              <Button layoutX="396.0" layoutY="356.0" mnemonicParsing="false" text="View" />
+                              <Button layoutX="396.0" layoutY="314.0" mnemonicParsing="false" onAction="#viewAllCountries" text="View" />
+                              <Button layoutX="396.0" layoutY="356.0" mnemonicParsing="false" onAction="#viewAllPlayers" text="View" />
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
