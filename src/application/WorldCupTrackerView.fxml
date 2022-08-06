@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.collections.FXCollections?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="825.0" prefWidth="995.0">
+         <children>
+            <SplitPane prefHeight="825.0" prefWidth="484.0">
+               <items>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TextField layoutX="251.0" layoutY="369.0" />
+                        <TextField layoutX="251.0" layoutY="616.0" />
+                        <ChoiceBox layoutX="251.0" layoutY="504.0" prefHeight="31.0" prefWidth="187.0">
+                        	<items>
+                        		<FXCollections fx:factory="observableArrayList">
+                        			<String fx:value="Win" />
+                        			<String fx:value="Draw" />
+                        		</FXCollections>
+                        	</items>
+                        </ChoiceBox>
+                        <TextField layoutX="251.0" layoutY="471.0" />
+                        <Button layoutX="227.0" layoutY="50.0" mnemonicParsing="false" text="Add" textFill="#1515bf" />
+                        <Label layoutX="42.0" layoutY="95.0" text="Country Name:" />
+                        <Label layoutX="42.0" layoutY="125.0" text="Matches Won:" />
+                        <Label layoutX="42.0" layoutY="156.0" text="Matches Drawn:" />
+                        <TextField layoutX="251.0" layoutY="90.0" />
+                        <TextField layoutX="251.0" layoutY="151.0" />
+                        <Label layoutX="22.0" layoutY="47.0" text="Add Country" textFill="#261ec3">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="22.0" layoutY="223.0" text="Add Player" textFill="#b85321">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="227.0" layoutY="226.0" mnemonicParsing="false" text="Add" textFill="#b8633d" />
+                        <Label layoutX="42.0" layoutY="273.0" text="Player Name:" />
+                        <Label layoutX="42.0" layoutY="307.0" text="Age:" />
+                        <Label layoutX="40.0" layoutY="340.0" text="Goals Scored:" />
+                        <Label layoutX="40.0" layoutY="374.0" text="Number of Assists:" />
+                        <TextField layoutX="251.0" layoutY="268.0" />
+                        <TextField layoutX="251.0" layoutY="302.0" />
+                        <Slider blockIncrement="1.0" layoutX="251.0" layoutY="676.0" majorTickUnit="1.0" max="7.0" minorTickCount="0" prefHeight="18.0" prefWidth="187.0" showTickLabels="true" showTickMarks="true" />
+                        <Slider blockIncrement="1.0" layoutX="251.0" layoutY="731.0" majorTickUnit="1.0" max="7.0" minorTickCount="0" prefHeight="18.0" prefWidth="187.0" showTickLabels="true" showTickMarks="true" />
+                        <Label layoutX="22.0" layoutY="425.0" text="Update Country" textFill="#3426d0">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="216.0" layoutY="428.0" mnemonicParsing="false" text="Update" textFill="#2f22bc" />
+                        <Label layoutX="42.0" layoutY="476.0" text="Country Name:" />
+                        <Label layoutX="42.0" layoutY="509.0" text="Match Result:" />
+                        <TextField layoutX="251.0" layoutY="120.0" />
+                        <Label layoutX="23.0" layoutY="570.0" text="Update Player" textFill="#ad411a">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="219.0" layoutY="573.0" mnemonicParsing="false" text="Update" textFill="#c96d26" />
+                        <Label layoutX="42.0" layoutY="621.0" text="Player Name:" />
+                        <Label layoutX="40.0" layoutY="664.0" text="Goals Scored:" />
+                        <Label layoutX="40.0" layoutY="719.0" text="Goals Assisted:" />
+                        <TextField layoutX="251.0" layoutY="335.0" />
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+            <AnchorPane prefHeight="825.0" prefWidth="530.0">
+               <children>
+                  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="825.0" prefWidth="521.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <Label layoutX="28.0" layoutY="48.0" text="Display Options:">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="47.0" layoutY="97.0" text="Display Top 3 Countries with Most Points:" />
+                              <Label layoutX="47.0" layoutY="132.0" text="Display Top 3 Highest-Scoring Players:" />
+                              <Label layoutX="47.0" layoutY="168.0" text="Display All Players of a Country:" />
+                              <Button layoutX="396.0" layoutY="92.0" mnemonicParsing="false" text="View" />
+                              <Button layoutX="396.0" layoutY="127.0" mnemonicParsing="false" text="View" />
+                              <TextField layoutX="166.0" layoutY="195.0" />
+                              <Button layoutX="381.0" layoutY="195.0" mnemonicParsing="false" text="Generate" />
+                              <Label layoutX="48.0" layoutY="238.0" text="Display Players Over a Certain Age:" />
+                              <TextField layoutX="166.0" layoutY="267.0" />
+                              <Button layoutX="381.0" layoutY="267.0" mnemonicParsing="false" text="Generate" />
+                              <Label layoutX="48.0" layoutY="319.0" text="Display All Countries:" />
+                              <Label layoutX="47.0" layoutY="361.0" text="Display All Players:" />
+                              <Button layoutX="396.0" layoutY="314.0" mnemonicParsing="false" text="View" />
+                              <Button layoutX="396.0" layoutY="356.0" mnemonicParsing="false" text="View" />
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <TextArea prefHeight="407.0" prefWidth="519.0" />
+                           </children></AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</VBox>
