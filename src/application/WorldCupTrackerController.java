@@ -37,9 +37,6 @@ public class WorldCupTrackerController {
     private TextField matchesDrawnTextfield;
 
     @FXML
-    private Slider assistSlider;
-
-    @FXML
     private TextField goalsScoredTextfield;
 
     @FXML
@@ -50,6 +47,9 @@ public class WorldCupTrackerController {
     
     @FXML
     private TextArea outputTextArea;
+    
+    @FXML
+    private Slider countryGoalsSlider;
 
     @FXML
     void addCountry(ActionEvent event) {
@@ -78,13 +78,13 @@ public class WorldCupTrackerController {
     void updateCountry(ActionEvent event) {
     	String name = updateCountryTextfield.getText().toUpperCase();
     	String matchResult = resultChoicebox.getValue();
+    	int goalsScored = (int) countryGoalsSlider.getValue();
     }
 
     @FXML
     void updatePlayer(ActionEvent event) {
     	String name = updatePlayerTextfield.getText();
-    	int goalsScored = (int) goalsSlider.getValue();
-    	int numAssists = (int) assistSlider.getValue();    	
+    	int goalsScored = (int) goalsSlider.getValue();   	
     }
 
     @FXML
