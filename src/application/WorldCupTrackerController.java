@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class WorldCupTrackerController {
@@ -12,7 +13,7 @@ public class WorldCupTrackerController {
     private TextField countryNameTextfield;
 
     @FXML
-    private ChoiceBox<?> resultChoicebox;
+    private ChoiceBox<String> resultChoicebox;
 
     @FXML
     private TextField playerNameTextfield;
@@ -24,10 +25,10 @@ public class WorldCupTrackerController {
     private TextField matchesWonTextfield;
 
     @FXML
-    private TextField ageTextfield;
+    private TextField playersCountryTextfield;
 
     @FXML
-    private TextField displayAgeTextfield;
+    private TextField countryGoalsTextfield;
 
     @FXML
     private TextField updateCountryTextfield;
@@ -45,16 +46,19 @@ public class WorldCupTrackerController {
     private TextField updatePlayerTextfield;
 
     @FXML
-    private TextField assistsTextfield;
-
-    @FXML
     private Slider goalsSlider;
+    
+    @FXML
+    private TextArea outputTextArea;
 
     @FXML
     void addCountry(ActionEvent event) {
     	String name = countryNameTextfield.getText().toUpperCase();
     	int matchesWon = Integer.parseInt(matchesWonTextfield.getText());
     	int matchesDrawn = Integer.parseInt(matchesDrawnTextfield.getText());
+    	int totalGoals = Integer.parseInt(countryGoalsTextfield.getText());
+    	
+    	Country countryData = new Country(name, matchesWon, matchesDrawn, totalGoals);
     	
     	countryNameTextfield.clear();
     	matchesWonTextfield.clear();
@@ -64,26 +68,23 @@ public class WorldCupTrackerController {
     @FXML
     void addPlayer(ActionEvent event) {
     	String name = playerNameTextfield.getText().toUpperCase();
-    	int age = Integer.parseInt(ageTextfield.getText());
+    	String country = playersCountryTextfield.getText().toUpperCase();
     	int goals = Integer.parseInt(goalsScoredTextfield.getText());
-    	int assists = Integer.parseInt(assistsTextfield.getText());
+    	
+    	Player playerData = new Player(name, country, goals);
     }
 
     @FXML
     void updateCountry(ActionEvent event) {
     	String name = updateCountryTextfield.getText().toUpperCase();
-    	Object matchResult = resultChoicebox.getValue();
+    	String matchResult = resultChoicebox.getValue();
     }
 
     @FXML
     void updatePlayer(ActionEvent event) {
     	String name = updatePlayerTextfield.getText();
-    	double goalsScored = goalsSlider.getValue();
-    	double numAssists = assistSlider.getValue();
-
-    	int goals = (int)goalsScored;
-    	int assists = (int)numAssists;
-    	
+    	int goalsScored = (int) goalsSlider.getValue();
+    	int numAssists = (int) assistSlider.getValue();    	
     }
 
     @FXML
@@ -98,11 +99,6 @@ public class WorldCupTrackerController {
 
     @FXML
     void viewPlayersOfCountries(ActionEvent event) {
-
-    }
-
-    @FXML
-    void viewCertainAge(ActionEvent event) {
 
     }
 

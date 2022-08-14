@@ -15,7 +15,7 @@ public class Main extends Application {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			VBox root = loader.load(new FileInputStream("src/application/WorldCupTrackerView.fxml"));
-			Scene scene = new Scene(root,1000, 750);
+			Scene scene = new Scene(root,1000, 800);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Football World Cup 2022 Tracker");
 			primaryStage.show();

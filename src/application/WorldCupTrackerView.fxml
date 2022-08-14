@@ -46,11 +46,11 @@
                         </Label>
                         <Button layoutX="227.0" layoutY="226.0" mnemonicParsing="false" onAction="#addPlayer" text="Add" textFill="#b8633d" />
                         <Label layoutX="42.0" layoutY="273.0" text="Player Name:" />
-                        <Label layoutX="42.0" layoutY="307.0" text="Age:" />
+                        <Label layoutX="42.0" layoutY="307.0" text="Country:" />
                         <Label layoutX="40.0" layoutY="340.0" text="Goals Scored:" />
                         <Label layoutX="40.0" layoutY="374.0" text="Number of Assists:" />
                         <TextField fx:id="playerNameTextfield" layoutX="251.0" layoutY="268.0" />
-                        <TextField fx:id="ageTextfield" layoutX="251.0" layoutY="302.0" />
+                        <TextField fx:id="playersCountryTextfield" layoutX="251.0" layoutY="302.0" />
                         <Slider fx:id="goalsSlider" blockIncrement="1.0" layoutX="251.0" layoutY="676.0" majorTickUnit="1.0" max="7.0" minorTickCount="0" prefHeight="18.0" prefWidth="187.0" showTickLabels="true" showTickMarks="true" />
                         <Slider fx:id="assistSlider" blockIncrement="1.0" layoutX="251.0" layoutY="731.0" majorTickUnit="1.0" max="7.0" minorTickCount="0" prefHeight="18.0" prefWidth="187.0" showTickLabels="true" showTickMarks="true" />
                         <Label layoutX="22.0" layoutY="425.0" text="Update Country" textFill="#3426d0">
@@ -78,7 +78,7 @@
             </SplitPane>
             <AnchorPane prefHeight="825.0" prefWidth="530.0">
                <children>
-                  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="825.0" prefWidth="521.0">
+                  <SplitPane dividerPositions="0.4362089914945322" orientation="VERTICAL" prefHeight="825.0" prefWidth="521.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
@@ -92,20 +92,17 @@
                               <Label layoutX="47.0" layoutY="168.0" text="Display All Players of a Country:" />
                               <Button layoutX="396.0" layoutY="92.0" mnemonicParsing="false" onAction="#viewTopCountries" text="View" />
                               <Button layoutX="396.0" layoutY="127.0" mnemonicParsing="false" onAction="#viewTopPlayers" text="View" />
-                              <TextField fx:id="playersOfCountriesTextfield" layoutX="166.0" layoutY="195.0" />
+                              <TextField fx:id="playersOfCountriesTextfield" layoutX="109.0" layoutY="195.0" />
                               <Button layoutX="381.0" layoutY="195.0" mnemonicParsing="false" onAction="#viewPlayersOfCountries" text="Generate" />
-                              <Label layoutX="48.0" layoutY="238.0" text="Display Players Over a Certain Age:" />
-                              <TextField fx:id="displayAgeTextfield" layoutX="166.0" layoutY="267.0" />
-                              <Button layoutX="381.0" layoutY="267.0" mnemonicParsing="false" onAction="#viewCertainAge" text="Generate" />
-                              <Label layoutX="48.0" layoutY="319.0" text="Display All Countries:" />
-                              <Label layoutX="47.0" layoutY="361.0" text="Display All Players:" />
-                              <Button layoutX="396.0" layoutY="314.0" mnemonicParsing="false" onAction="#viewAllCountries" text="View" />
-                              <Button layoutX="396.0" layoutY="356.0" mnemonicParsing="false" onAction="#viewAllPlayers" text="View" />
+                              <Label layoutX="48.0" layoutY="249.0" text="Display All Countries:" />
+                              <Label layoutX="47.0" layoutY="293.0" text="Display All Players:" />
+                              <Button layoutX="396.0" layoutY="244.0" mnemonicParsing="false" onAction="#viewAllCountries" text="View" />
+                              <Button layoutX="396.0" layoutY="288.0" mnemonicParsing="false" onAction="#viewAllPlayers" text="View" />
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <TextArea prefHeight="407.0" prefWidth="519.0" />
+                              <TextArea fx:id="outputTextArea" prefHeight="460.0" prefWidth="519.0" />
                            </children></AnchorPane>
                     </items>
                   </SplitPane>
