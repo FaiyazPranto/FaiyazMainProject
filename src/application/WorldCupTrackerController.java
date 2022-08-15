@@ -56,6 +56,7 @@ public class WorldCupTrackerController {
     
     ArrayList<Player> playerData = new ArrayList();
     ArrayList<Country> countryData = new ArrayList();
+    
 
     @FXML
     void addCountry(ActionEvent event) {
@@ -89,12 +90,25 @@ public class WorldCupTrackerController {
     	String name = updateCountryTextfield.getText().toUpperCase();
     	String matchResult = resultChoicebox.getValue();
     	int goalsScored = (int) countryGoalsSlider.getValue();
+    	
+    	for (Country i: countryData) {
+    		if (i.getName().equals(name)) {
+    			i.addGoals(goalsScored);
+    			i.updateResult(matchResult);
+    		}
+    	}
     }
 
     @FXML
     void updatePlayer(ActionEvent event) {
     	String name = updatePlayerTextfield.getText();
     	int goalsScored = (int) goalsSlider.getValue();   	
+    	
+    	for (Player j: playerData) {
+    		if (j.getName().equals(name)) {
+    			j.addGoals(goalsScored); 
+    		}
+    	}
     }
 
     @FXML

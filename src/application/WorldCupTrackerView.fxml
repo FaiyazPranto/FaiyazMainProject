@@ -28,13 +28,13 @@
                         	</items>
                         </ChoiceBox>
                         <TextField fx:id="updateCountryTextfield" layoutX="251.0" layoutY="471.0" />
-                        <Button layoutX="227.0" layoutY="50.0" mnemonicParsing="false" onAction="#addCountry" text="Add" textFill="#1515bf" />
+                        <Button layoutX="231.0" layoutY="51.0" mnemonicParsing="false" onAction="#addCountry" text="Add" textFill="#1515bf" />
                         <Label layoutX="37.0" layoutY="101.0" text="Country Name:" />
                         <Label layoutX="38.0" layoutY="136.0" text="Matches Won:" />
                         <Label layoutX="39.0" layoutY="172.0" text="Matches Drawn:" />
                         <TextField fx:id="countryNameTextfield" layoutX="251.0" layoutY="96.0" />
                         <TextField fx:id="matchesDrawnTextfield" layoutX="251.0" layoutY="167.0" />
-                        <Label layoutX="22.0" layoutY="47.0" text="Add Country" textFill="#261ec3">
+                        <Label layoutX="22.0" layoutY="48.0" text="Add Country" textFill="#261ec3">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -44,7 +44,7 @@
                               <Font size="25.0" />
                            </font>
                         </Label>
-                        <Button layoutX="230.0" layoutY="260.0" mnemonicParsing="false" onAction="#addPlayer" text="Add" textFill="#b8633d" />
+                        <Button layoutX="231.0" layoutY="260.0" mnemonicParsing="false" onAction="#addPlayer" text="Add" textFill="#b8633d" />
                         <Label layoutX="39.0" layoutY="306.0" text="Player Name:" />
                         <Label layoutX="40.0" layoutY="340.0" text="Country: " />
                         <Label layoutX="40.0" layoutY="374.0" text="Goals Scored:" />
@@ -55,16 +55,16 @@
                               <Font size="25.0" />
                            </font>
                         </Label>
-                        <Button layoutX="216.0" layoutY="428.0" mnemonicParsing="false" onAction="#updateCountry" text="Update" textFill="#2f22bc" />
+                        <Button layoutX="220.0" layoutY="428.0" mnemonicParsing="false" onAction="#updateCountry" text="Update" textFill="#2f22bc" />
                         <Label layoutX="42.0" layoutY="476.0" text="Country Name:" />
                         <Label layoutX="42.0" layoutY="509.0" text="Match Result:" />
                         <TextField fx:id="matchesWonTextfield" layoutX="251.0" layoutY="131.0" />
-                        <Label layoutX="15.0" layoutY="604.0" text="Update Player" textFill="#ad411a">
+                        <Label layoutX="23.0" layoutY="602.0" text="Update Player" textFill="#ad411a">
                            <font>
                               <Font size="25.0" />
                            </font>
                         </Label>
-                        <Button layoutX="220.0" layoutY="604.0" mnemonicParsing="false" onAction="#updatePlayer" text="Update" textFill="#c96d26" />
+                        <Button layoutX="221.0" layoutY="605.0" mnemonicParsing="false" onAction="#updatePlayer" text="Update" textFill="#c96d26" />
                         <Label layoutX="39.0" layoutY="656.0" text="Player Name:" />
                         <Label layoutX="40.0" layoutY="700.0" text="Goals Scored:" />
                         <TextField fx:id="goalsScoredTextfield" layoutX="251.0" layoutY="369.0" />

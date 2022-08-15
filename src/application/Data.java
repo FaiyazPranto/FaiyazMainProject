@@ -16,16 +16,20 @@ public class Data {
 		return this.name;
 	}
 	
+	public void setName(String name2) {
+		this.name = name2;
+	}
+	
 	public int getGoals() {
 		return this.goals;
 	}
 	
-	public void setGoals(int goals) {
-		this.goals = goals;
+	public void setGoals(int goals2) {
+		this.goals = goals2;
 	}
 	
-	public void addGoals(int goals) {
-		this.goals += goals;
+	public void addGoals(int goalsUpdated) {
+		this.goals += goalsUpdated;
 	}
 	
 	public String toString() {
