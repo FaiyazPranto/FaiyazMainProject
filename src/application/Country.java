@@ -3,11 +3,14 @@ package application;
 public class Country extends Data{
 	private int matchesWon;
 	private int matchesDrawn;
+	private double points;
 
 	public Country(String name, int matchesWon, int matchesDrawn, int goals) {
 		super(name, goals);
 		this.matchesWon = matchesWon;
 		this.matchesDrawn = matchesDrawn;
+		
+		this.points = (3 * this.matchesWon) + (1 * this.matchesDrawn);
 	}
 	
 	public String getName() {
@@ -36,6 +39,10 @@ public class Country extends Data{
 
 	public void setMatchesDrawn(int matchesDrawn2) {
 		this.matchesDrawn = matchesDrawn2;
+	}
+	
+	public double getPoints() {
+		return this.points;
 	}
 	
 	public void updateResult(String result) {
