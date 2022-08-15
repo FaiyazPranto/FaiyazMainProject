@@ -1,9 +1,9 @@
 package application;
 
-public class Player {
+public class Player extends Data {
 	
 	public Player(String name, String country, int goals) {
-		// TODO Auto-generated constructor stub
+		super(name, goals);
 	}
 
 }
