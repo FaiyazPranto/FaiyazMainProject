@@ -70,7 +70,8 @@
                         <TextField fx:id="goalsScoredTextfield" layoutX="251.0" layoutY="369.0" />
                         <Label layoutX="39.0" layoutY="205.0" text="Total Goals:" />
                         <TextField fx:id="countryGoalsTextfield" layoutX="251.0" layoutY="200.0" />
-                        <Slider blockIncrement="1.0" layoutX="251.0" layoutY="556.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="18.0" prefWidth="187.0" showTickLabels="true" showTickMarks="true" />
+                        <Slider fx:id="countryGoalsSlider" blockIncrement="1.0" layoutX="251.0" layoutY="556.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="18.0" prefWidth="187.0" showTickLabels="true" showTickMarks="true" />
+                        <Label layoutX="42.0" layoutY="546.0" text="Goals Scored:" />
                      </children>
                   </AnchorPane>
                </items>

@@ -1,5 +1,7 @@
 package application;
 
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
@@ -50,6 +52,10 @@ public class WorldCupTrackerController {
     
     @FXML
     private Slider countryGoalsSlider;
+    
+    
+    ArrayList<Player> playerData = new ArrayList();
+    ArrayList<Country> countryData = new ArrayList();
 
     @FXML
     void addCountry(ActionEvent event) {
@@ -58,7 +64,7 @@ public class WorldCupTrackerController {
     	int matchesDrawn = Integer.parseInt(matchesDrawnTextfield.getText());
     	int totalGoals = Integer.parseInt(countryGoalsTextfield.getText());
     	
-    	Country countryData = new Country(name, matchesWon, matchesDrawn, totalGoals);
+    	countryData.add(new Country(name, matchesWon, matchesDrawn, totalGoals));
     	
     	countryNameTextfield.clear();
     	matchesWonTextfield.clear();
@@ -71,7 +77,11 @@ public class WorldCupTrackerController {
     	String country = playersCountryTextfield.getText().toUpperCase();
     	int goals = Integer.parseInt(goalsScoredTextfield.getText());
     	
-    	Player playerData = new Player(name, country, goals);
+    	playerData.add(new Player(name, country, goals));
+    	
+    	playerNameTextfield.clear();
+    	playersCountryTextfield.clear();
+    	goalsScoredTextfield.clear();
     }
 
     @FXML
