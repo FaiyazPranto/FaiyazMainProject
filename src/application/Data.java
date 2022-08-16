@@ -8,7 +8,7 @@ public class Data {
 		String name_2 = name;
 		this.name = name_2;
 		
-		int goals_2 = Integer.valueOf(this.goals);
+		int goals_2 = Integer.valueOf(goals);
 		this.goals = goals_2;
 	}
 	

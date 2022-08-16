@@ -3,7 +3,7 @@ package application;
 public class Country extends Data{
 	private int matchesWon;
 	private int matchesDrawn;
-	private double points;
+	private int points;
 
 	public Country(String name, int matchesWon, int matchesDrawn, int goals) {
 		super(name, goals);
@@ -41,16 +41,18 @@ public class Country extends Data{
 		this.matchesDrawn = matchesDrawn2;
 	}
 	
-	public double getPoints() {
+	public int getPoints() {
 		return this.points;
 	}
 	
 	public void updateResult(String result) {
-		if (result.equals("Win")) {
-			matchesWon += 1;
+		if (result.equals("W")) {
+			this.matchesWon += 1;
+			this.points += 3;
 		}
-		else if (result.equals("Draw")) {
-			matchesDrawn += 1;
+		else if (result.equals("D")) {
+			this.matchesDrawn += 1;
+			this.points += 1;
 		}
 	}
 
