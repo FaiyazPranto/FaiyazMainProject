@@ -8,7 +8,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
 
 public class WorldCupTrackerController {
 
@@ -55,8 +54,8 @@ public class WorldCupTrackerController {
     private Slider countryGoalsSlider;
     
     
-    ArrayList<Player> playerData = new ArrayList();
-    ArrayList<Country> countryData = new ArrayList();
+    ArrayList<Player> playerData = new ArrayList<Player>();
+    ArrayList<Country> countryData = new ArrayList<Country>();
     
 
     @FXML
@@ -118,6 +117,8 @@ public class WorldCupTrackerController {
 		    	playersCountryTextfield.clear();
 		    	goalsScoredTextfield.clear();
 		    }
+	    	outputTextArea.clear();
+	    	
     	}
     	catch(NumberFormatException e) {
     		outputTextArea.setText("Please use proper values for Goals Scored.");
@@ -148,6 +149,7 @@ public class WorldCupTrackerController {
     		}
     		
 	    	updateCountryTextfield.clear();
+	    	outputTextArea.clear();
     	}
     	catch(NullPointerException e) {
     		outputTextArea.setText("Please provide proper values.");
@@ -173,6 +175,7 @@ public class WorldCupTrackerController {
 		    }
 	    	
 	    	updatePlayerTextfield.clear();
+	    	outputTextArea.clear();
     	}
     	catch(NullPointerException e) {
     		outputTextArea.setText("Please provide proper values.");
@@ -181,12 +184,37 @@ public class WorldCupTrackerController {
 
     @FXML
     void viewTopCountries(ActionEvent event) {
-
+    	outputTextArea.clear();
+    	Sorting sorting = new Sorting();
+		countryData = sorting.countrySort(countryData);
+		
+    	String output = "";
+    	int index = 1;
+    	
+    	for (Country i : countryData) {
+    		output += index + ". " + i.getName() + " - " + i.getPoints() + " points (" + i.getMatchesWon() + " wins, " 
+    				+ i.getMatchesDrawn() + " draws, " + i.getGoals() + " goals)\n";
+    		index ++;
+    	}
+    	
+    	outputTextArea.setText(output);
     }
 
     @FXML
     void viewTopPlayers(ActionEvent event) {
-
+    	outputTextArea.clear();
+    	Sorting sorting = new Sorting();
+		playerData = sorting.playerSort(playerData);
+		
+    	String output = "";
+    	int index = 1;
+    	
+    	for (Player i : playerData) {
+    		output += index + ". " + i.getName() + " (" + i.getGoals() + " goals)\n";
+    		index ++;
+    	}
+    	
+    	outputTextArea.setText(output);
     }
 
     @FXML
@@ -203,11 +231,12 @@ public class WorldCupTrackerController {
     		}
     	}
     	playerCountryList.sort(null);
-    	outputTextArea.setText(playerCountryList.toString());
     	
     	for (String name : playerCountryList) {
     		output += name + "\n";
     	}
+    	
+    	outputTextArea.setText(output);
     }
 
     @FXML
