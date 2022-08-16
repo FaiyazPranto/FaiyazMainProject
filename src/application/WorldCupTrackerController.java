@@ -69,16 +69,28 @@ public class WorldCupTrackerController {
 	    	int matchesDrawn = Integer.parseInt(matchesDrawnTextfield.getText());
 	    	int totalGoals = Integer.parseInt(countryGoalsTextfield.getText());
 	    	
-	    	if (matchesWon <= 0 || matchesDrawn <= 0 || totalGoals <= 0) {
-	    		outputTextArea.setText("Matches Won, Matches Drawn and Total Goals cannot be a negative value.");
+	    	Boolean check = true;
+	    	for (Country i: countryData) {
+    			if (i.getName().equals(name)) {
+    				check = false;
+    			}
+    		}
+	    	
+	    	if (check == true) {
+		    	if (matchesWon < 0 || matchesDrawn < 0 || totalGoals < 0) {
+		    		outputTextArea.setText("Matches Won, Matches Drawn and Total Goals cannot be a negative value.");
+		    	}
+		    	else {	    	
+			    	countryData.add(new Country(name, matchesWon, matchesDrawn, totalGoals));
+			    	
+			    	countryNameTextfield.clear();
+			    	matchesWonTextfield.clear();
+			    	matchesDrawnTextfield.clear();
+			    	countryGoalsTextfield.clear();
+		    	}
 	    	}
-	    	else {	    	
-		    	countryData.add(new Country(name, matchesWon, matchesDrawn, totalGoals));
-		    	
-		    	countryNameTextfield.clear();
-		    	matchesWonTextfield.clear();
-		    	matchesDrawnTextfield.clear();
-		    	countryGoalsTextfield.clear();
+	    	else {
+	    		outputTextArea.setText("The country has already been added.");
 	    	}
     	}
     	catch(NumberFormatException e) {
@@ -96,7 +108,7 @@ public class WorldCupTrackerController {
 	    	String country = playersCountryTextfield.getText().toUpperCase();
 	    	int goals = Integer.parseInt(goalsScoredTextfield.getText());
 	    	
-	    	if (goals <= 0) {
+	    	if (goals < 0) {
 	    		outputTextArea.setText("Goals Scored cannot be a negative value.");
 	    	}
 		    else {	    	
@@ -121,17 +133,20 @@ public class WorldCupTrackerController {
 	    	String name = updateCountryTextfield.getText().toUpperCase();
 	    	String matchResult = resultChoicebox.getValue();
 	    	int goalsScored = (int) countryGoalsSlider.getValue();
+	    	boolean check = false;
 	    	
 	    	for (Country i: countryData) {
 	    		if (i.getName().equals(name)) {
 	    			i.addGoals(goalsScored);
 	    			i.updateResult(matchResult);
-	    		}
-	    		else {
-	    			outputTextArea.setText("There is no country that matches the input");
+	    			check = true;
 	    		}
 	    	}
 	    	
+    		if (check == false) {
+    			outputTextArea.setText("There is no country that matches the input");
+    		}
+    		
 	    	updateCountryTextfield.clear();
     	}
     	catch(NullPointerException e) {
@@ -142,17 +157,22 @@ public class WorldCupTrackerController {
     @FXML
     void updatePlayer(ActionEvent event) {
     	try {
-	    	String name = updatePlayerTextfield.getText();
+	    	String name = updatePlayerTextfield.getText().toUpperCase();
 	    	int goalsScored = (int) goalsSlider.getValue();   	
+	    	boolean check = false;
 	    	
-	    	for (Player j: playerData) {
+	    	for (Player j: playerData) {	    		
 	    		if (j.getName().equals(name)) {
 	    			j.addGoals(goalsScored); 
-	    		}
-	    		else {
-	    			outputTextArea.setText("There is no player that matches the input");
+	    			check = true;
 	    		}
 	    	}
+	    	
+	    	if (check == false)	{
+		 	    outputTextArea.setText("There is no player that matches the input.");
+		    }
+	    	
+	    	updatePlayerTextfield.clear();
     	}
     	catch(NullPointerException e) {
     		outputTextArea.setText("Please provide proper values.");
@@ -171,17 +191,59 @@ public class WorldCupTrackerController {
 
     @FXML
     void viewPlayersOfCountries(ActionEvent event) {
-
+    	outputTextArea.clear();
+    	
+    	String country = playersOfCountriesTextfield.getText().toUpperCase();
+    	ArrayList<String> playerCountryList = new ArrayList<String>();
+    	String output = "";
+    	
+    	for (Player i: playerData) {
+    		if (country.equals(i.getCountry())) {
+    			playerCountryList.add(i.getName());
+    		}
+    	}
+    	playerCountryList.sort(null);
+    	outputTextArea.setText(playerCountryList.toString());
+    	
+    	for (String name : playerCountryList) {
+    		output += name + "\n";
+    	}
     }
 
     @FXML
     void viewAllCountries(ActionEvent event) {
-
+    	outputTextArea.clear();
+    	
+    	String output = "";
+    	ArrayList <String> countryList = new ArrayList<String>();
+    	for (Country index : countryData) {
+    		countryList.add(index.getName());
+    	}
+    	countryList.sort(null);
+    	
+    	for (String name : countryList) {
+    		output += name + "\n";
+    	}
+    	
+    	outputTextArea.setText(output);
     }
 
     @FXML
     void viewAllPlayers(ActionEvent event) {
-
+    	outputTextArea.clear();
+    	
+    	String output = "";
+    	ArrayList<String> playerList = new ArrayList<String>();
+    	for (Player index : playerData) {
+    		playerList.add(index.getName() + " (" + index.getCountry() + ")");    		
+    	}
+    	playerList.sort(null);
+    	
+    	for (String name : playerList) {
+    		output += name + "\n";
+    	}
+    	
+    	outputTextArea.setText(output);
     }
 
 }

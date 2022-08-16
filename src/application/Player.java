@@ -29,7 +29,7 @@ public class Player extends Data {
 	}
 	
 	public String getCountry() {
-		return country;
+		return this.country;
 	}
 	
 	public void setCountry(String country2) {
