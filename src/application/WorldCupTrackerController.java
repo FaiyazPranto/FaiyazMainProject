@@ -123,16 +123,29 @@ public class WorldCupTrackerController {
 	    	String country = playersCountryTextfield.getText().toUpperCase();
 	    	int goals = Integer.parseInt(goalsScoredTextfield.getText());
 	    	
-	    	if (goals < 0) {
-	    		outputTextArea.setText("Goals Scored cannot be a negative value.");
+	    	Boolean check = true;
+	    	for (Player i: playerData) {
+    			if (i.getName().equals(name)) {
+    				if (i.getCountry().equals(country)) {
+    					check = false;
+    				}
+    			}
+    		}
+	    	if (check == true) {	    	
+		    	if (goals < 0) {
+		    		outputTextArea.setText("Goals Scored cannot be a negative value.");
+		    	}
+			    else {	    	
+			    	playerData.add(new Player(name, country, goals));
+			    	
+			    	playerNameTextfield.clear();
+			    	playersCountryTextfield.clear();
+			    	goalsScoredTextfield.clear();
+			    }
 	    	}
-		    else {	    	
-		    	playerData.add(new Player(name, country, goals));
-		    	
-		    	playerNameTextfield.clear();
-		    	playersCountryTextfield.clear();
-		    	goalsScoredTextfield.clear();
-		    }
+	    	else {
+	    		outputTextArea.setText("This player has already been added.");
+	    	}
 	    	
     	}
     	catch(NumberFormatException e) {
