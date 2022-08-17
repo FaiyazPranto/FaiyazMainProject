@@ -54,10 +54,16 @@ public class WorldCupTrackerController {
     private Slider countryGoalsSlider;
     
     
+    // Created new lists to add the datasets for players and countries.
+    
     ArrayList<Player> playerData = new ArrayList<Player>();
     ArrayList<Country> countryData = new ArrayList<Country>();
     
-
+    /**
+     * Adds a country to the list containing all the data inputs for the country.
+     * @param event
+     */
+    
     @FXML
     void addCountry(ActionEvent event) {
     	try {
@@ -68,6 +74,8 @@ public class WorldCupTrackerController {
 	    	int matchesDrawn = Integer.parseInt(matchesDrawnTextfield.getText());
 	    	int totalGoals = Integer.parseInt(countryGoalsTextfield.getText());
 	    	
+	    	
+	    	// Checks if the data has already been added or not.
 	    	Boolean check = true;
 	    	for (Country i: countryData) {
     			if (i.getName().equals(name)) {
@@ -75,6 +83,7 @@ public class WorldCupTrackerController {
     			}
     		}
 	    	
+	    	//Checks if the values are negative or not.
 	    	if (check == true) {
 		    	if (matchesWon < 0 || matchesDrawn < 0 || totalGoals < 0) {
 		    		outputTextArea.setText("Matches Won, Matches Drawn and Total Goals cannot be a negative value.");
@@ -92,6 +101,7 @@ public class WorldCupTrackerController {
 	    		outputTextArea.setText("The country has already been added.");
 	    	}
     	}
+    	// Catches errors caused because of null and non-integer values.  
     	catch(NumberFormatException e) {
     		outputTextArea.setText("Please use proper values for Matches Won, Matches Drawn and Total Goals.");
     	}
@@ -99,10 +109,16 @@ public class WorldCupTrackerController {
     		outputTextArea.setText("Please provide proper values.");
     	}
     }
-
+    
+    /**
+     * Adds a player to the list containing all the data inputs for the player.
+     * @param event
+     */
     @FXML
     void addPlayer(ActionEvent event) {
     	try {
+	    	outputTextArea.clear();
+	    	
 	    	String name = playerNameTextfield.getText().toUpperCase();
 	    	String country = playersCountryTextfield.getText().toUpperCase();
 	    	int goals = Integer.parseInt(goalsScoredTextfield.getText());
@@ -117,7 +133,6 @@ public class WorldCupTrackerController {
 		    	playersCountryTextfield.clear();
 		    	goalsScoredTextfield.clear();
 		    }
-	    	outputTextArea.clear();
 	    	
     	}
     	catch(NumberFormatException e) {
@@ -128,14 +143,21 @@ public class WorldCupTrackerController {
     	}
     }
 
+    /**
+     * Updates the dataset containing the data for the specified country.
+     * @param event
+     */
     @FXML
     void updateCountry(ActionEvent event) {
     	try {
+	    	outputTextArea.clear();
+    		
 	    	String name = updateCountryTextfield.getText().toUpperCase();
 	    	String matchResult = resultChoicebox.getValue();
 	    	int goalsScored = (int) countryGoalsSlider.getValue();
 	    	boolean check = false;
 	    	
+	    	// Update the data only if the country has already been added.
 	    	for (Country i: countryData) {
 	    		if (i.getName().equals(name)) {
 	    			i.addGoals(goalsScored);
@@ -147,18 +169,24 @@ public class WorldCupTrackerController {
     		if (check == false) {
     			outputTextArea.setText("There is no country that matches the input");
     		}
-    		
-	    	updateCountryTextfield.clear();
-	    	outputTextArea.clear();
+    		else {
+    			updateCountryTextfield.clear();
+    		}
     	}
     	catch(NullPointerException e) {
     		outputTextArea.setText("Please provide proper values.");
     	}
     }
 
+    /**
+     * Updates the dataset containing the data for the specified player.
+     * @param event
+     */
     @FXML
     void updatePlayer(ActionEvent event) {
     	try {
+	    	outputTextArea.clear();
+	    	
 	    	String name = updatePlayerTextfield.getText().toUpperCase();
 	    	int goalsScored = (int) goalsSlider.getValue();   	
 	    	boolean check = false;
@@ -173,24 +201,31 @@ public class WorldCupTrackerController {
 	    	if (check == false)	{
 		 	    outputTextArea.setText("There is no player that matches the input.");
 		    }
-	    	
-	    	updatePlayerTextfield.clear();
-	    	outputTextArea.clear();
+	    	else {
+	    		updatePlayerTextfield.clear();
+	    	}
     	}
     	catch(NullPointerException e) {
     		outputTextArea.setText("Please provide proper values.");
     	}
     }
 
+    /**
+     * Displays the ranking of top countries after sorting them using the sorting class.
+     * @param event
+     */
     @FXML
     void viewTopCountries(ActionEvent event) {
     	outputTextArea.clear();
     	Sorting sorting = new Sorting();
+    	
+    	//Calls the sorting function from the sorting class.
 		countryData = sorting.countrySort(countryData);
 		
     	String output = "";
     	int index = 1;
     	
+    	// Loops through the data of countries and list them accordingly.
     	for (Country i : countryData) {
     		output += index + ". " + i.getName() + " - " + i.getPoints() + " points (" + i.getMatchesWon() + " wins, " 
     				+ i.getMatchesDrawn() + " draws, " + i.getGoals() + " goals)\n";
@@ -199,7 +234,11 @@ public class WorldCupTrackerController {
     	
     	outputTextArea.setText(output);
     }
-
+    
+    /**
+     * Displays the ranking of top players after sorting them using the sorting class.
+     * @param event
+     */
     @FXML
     void viewTopPlayers(ActionEvent event) {
     	outputTextArea.clear();
@@ -216,7 +255,11 @@ public class WorldCupTrackerController {
     	
     	outputTextArea.setText(output);
     }
-
+    
+    /**
+     * Displays the list of all players of a specific country.
+     * @param event
+     */
     @FXML
     void viewPlayersOfCountries(ActionEvent event) {
     	outputTextArea.clear();
@@ -225,11 +268,14 @@ public class WorldCupTrackerController {
     	ArrayList<String> playerCountryList = new ArrayList<String>();
     	String output = "";
     	
+    	// Adds all the players of the same country input to a list.
     	for (Player i: playerData) {
     		if (country.equals(i.getCountry())) {
     			playerCountryList.add(i.getName());
     		}
     	}
+    	
+    	// Sort the players in alphabetical order
     	playerCountryList.sort(null);
     	
     	for (String name : playerCountryList) {
@@ -238,13 +284,18 @@ public class WorldCupTrackerController {
     	
     	outputTextArea.setText(output);
     }
-
+    
+    /**
+     * Displays a list of all the countries added so far.
+     * @param event
+     */
     @FXML
     void viewAllCountries(ActionEvent event) {
     	outputTextArea.clear();
     	
     	String output = "";
     	ArrayList <String> countryList = new ArrayList<String>();
+    	
     	for (Country index : countryData) {
     		countryList.add(index.getName());
     	}
@@ -257,6 +308,10 @@ public class WorldCupTrackerController {
     	outputTextArea.setText(output);
     }
 
+    /**
+     * Displays list of all the players added so far.
+     * @param event
+     */
     @FXML
     void viewAllPlayers(ActionEvent event) {
     	outputTextArea.clear();

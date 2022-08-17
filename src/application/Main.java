@@ -1,3 +1,12 @@
+/**
+ * Name: Faiyaz Altaf Pranto
+ * Group: 38
+ * UCID: 30162576
+ * Course: CPSC 233 Summer '22
+ * Tutorial: 02
+ * Date: 17 August, 2022
+ */
+
 package application;
 	
 import java.io.FileInputStream;
